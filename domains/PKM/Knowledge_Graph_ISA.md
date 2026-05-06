@@ -20,7 +20,12 @@
 ## 4. Emergent Patterns (Scribe's Observations)
 - [Pattern 1]: [Description]
 
-## 5. Relationships & Links
+## 5. Backlog & Ingestion Tracking
+- **Inbox Status**: [Pending count]
+- **Current Batch**: [Batch ID/Date]
+- **Ingestion Bottlenecks**: [e.g. Rate limits, malformed YAML]
+
+## 6. Relationships & Links
 - [[Entity A]] --(relationship)--> [[Entity B]]
 
 ## 6. Recent Captures
