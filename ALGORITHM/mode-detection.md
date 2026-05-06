@@ -38,6 +38,13 @@ When detected:
    - Prompt/skill/agent target or explicit `eval_mode: eval` → `eval_mode: eval`
 2. Set `mode: optimize` and `eval_mode` in ISA frontmatter
 
+## Compiler Mode
+
+**Triggers:** `scaffold [business]` | `compiler [business]` | `setup business unit` | `fix bottleneck`
+
+1. Set `mode: compiler` in ISA frontmatter
+2. Invoke `Skill("AgenticCompiler")` to initiate the Business X-Ray interview.
+
 ## Parameter Detection (Ideate & Optimize)
 
 **Resolution order:** Preset → Focus → Individual overrides → Meta-Learner (ideate only)

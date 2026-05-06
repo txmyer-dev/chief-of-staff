@@ -71,6 +71,13 @@
       "requires_services": ["HEYGEN_API_KEY"],
       "dependencies": [],
       "mcp_servers": ["heygen"]
+    },
+    "agentic-compiler": {
+      "category": "strategy",
+      "description": "Scaffold 3-layer Training Blueprints with ICM pipelines",
+      "requires_services": [],
+      "dependencies": [],
+      "mcp_servers": []
     }
   }
 }
