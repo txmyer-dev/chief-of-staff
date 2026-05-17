@@ -43,6 +43,7 @@ Or manually: read `INSTALL.md`, copy files from `src/` to the specified location
 | Pack | Description |
 |------|-------------|
 | [Agents](Agents/) | Custom agent composition from traits, voices, and personalities |
+| [CompoundEngineering](CompoundEngineering/) | 37 specialized skills and 49+ agents for end-to-end software engineering |
 | [ContentAnalysis](ContentAnalysis/) | Content extraction and wisdom from videos, podcasts, articles, and YouTube |
 | [Investigation](Investigation/) | OSINT and investigation — company intel, people search, domain lookup |
 | [Media](Media/) | Visual and video content — illustrations, diagrams, infographics, Remotion video |

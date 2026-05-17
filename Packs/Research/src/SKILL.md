@@ -71,6 +71,7 @@ Route to the appropriate workflow based on the request.
 
 ### Deep Content Analysis
 - Extract alpha / deep analysis / highest-alpha insights -> `Workflows/ExtractAlpha.md`
+- NotebookLM loop / Obsidian-Gemini-NotebookLM synergy -> `Workflows/NotebookLMLoop.md`
 
 ### Content Retrieval
 - Difficulty accessing content (CAPTCHA, bot detection, blocking) -> `Workflows/Retrieve.md`

@@ -71,6 +71,13 @@
       "requires_services": ["HEYGEN_API_KEY"],
       "dependencies": [],
       "mcp_servers": ["heygen"]
+    },
+    "CompoundEngineering": {
+      "category": "engineering",
+      "description": "37 specialized skills and 49+ agents for end-to-end software engineering",
+      "requires_services": [],
+      "dependencies": [],
+      "mcp_servers": []
     }
   }
 }

@@ -131,7 +131,9 @@ def render(
         )
 
         page.goto(template_url)
-        page.wait_for_function("window.__moduleReady === true", timeout=30000)
+        print("Page loaded, waiting for module...")
+        page.wait_for_function("window.__moduleReady === true", timeout=60000)
+        print("Module ready, rendering diagram...")
 
         json_str = json.dumps(data)
         result = page.evaluate(f"window.renderDiagram({json_str})")
@@ -142,7 +144,9 @@ def render(
             browser.close()
             sys.exit(1)
 
-        page.wait_for_function("window.__renderComplete === true", timeout=15000)
+        print("Diagram rendered, waiting for completion flag...")
+        page.wait_for_function("window.__renderComplete === true", timeout=30000)
+        print("Render complete, capturing screenshot...")
 
         svg_el = page.query_selector("#root svg")
         if svg_el is None:
