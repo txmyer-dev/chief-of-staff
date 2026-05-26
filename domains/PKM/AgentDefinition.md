@@ -13,9 +13,13 @@
 ## Domain Grounding
 - **Exobrain Root**: `agentic-wiki/`
 - **Inbox:** `agentic-wiki/00-INBOX/` (READ-ONLY)
-- **Vault:** `agentic-wiki/01-VAULT/` (WRITE)
+- **Vault:** `agentic-wiki/02-VAULT/` (WRITE)
 
 ## Operational Rules
-- **Non-Destructive Extraction**: Never edit files in `00-INBOX`. Extract entities and insights into new files in `01-VAULT`.
+- **Non-Destructive Extraction**: Never edit files in `00-INBOX`. Extract entities and insights into new files in `02-VAULT`.
 - **Link Integrity**: Every new note must have at least two links to existing notes.
 - **Zettelkasten**: Follow structural linking and entity mapping principles.
+- **Legacy PARA Link Translation**:
+  - Convert folder-structured links like `[[Projects/NoteName]]`, `[[Areas/NoteName]]`, or `[[Resources/NoteName]]` to flat wiki-links like `[[NoteName]]`.
+  - Translate any personal or contact links (e.g., `[[Personal/PersonName]]` or `[[Contacts/PersonName]]`) to the new unified People directory: `[[PEOPLE/PersonName]]`.
+

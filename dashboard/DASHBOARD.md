@@ -9,10 +9,10 @@
 
 | Domain | Specialist | Status | Next Milestone |
 | :--- | :--- | :--- | :--- |
-| **Finance** | Ledger | 🟡 Initializing | Create `Net_Worth_ISA.md` & Cash Flow logs. |
-| **Health** | Vitalis | 🟡 Initializing | Establish Sleep/HRV input pipeline. |
+| **Finance** | Ledger | 🟢 Operational | Integrate balance sheets & track runway. |
+| **Health** | Vitalis | 🟢 Operational | Sync daily vitals & sleep tracking. |
 | **PKM** | Scribe | 🟢 Operational | Process latest Granola meeting notes into Wiki. |
-| **Life-Ops** | Wayfinder | 🟡 Initializing | Identify and eliminate 1 source of daily friction. |
+| **Life-Ops** | Wayfinder | 🟢 Operational | Run daily morning/evening routine checks. |
 
 ## 🧠 Memory & Context
 - **Last Session**: Formalized CoS role and integrated Algorithm v6.3.0. Refactored Mulready CoS canon.
