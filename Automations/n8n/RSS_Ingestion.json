@@ -1,0 +1,72 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "url": "https://feeds.feedburner.com/TheRinger"
+      },
+      "name": "RSS Trigger",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "command": "gemini-p process-rss \"{{ $json.link }}\""
+      },
+      "name": "Gemini-P Process",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "fileContent": "={{ $json.stdout }}",
+        "filePath": "=/root/agentic-wiki/00-INBOX/{{ $json.title.replace(/\\s+/g, '-').toLowerCase() }}.md"
+      },
+      "name": "Write to Inbox",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        650,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "RSS Trigger": {
+      "main": [
+        [
+          {
+            "node": "Gemini-P Process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini-P Process": {
+      "main": [
+        [
+          {
+            "node": "Write to Inbox",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

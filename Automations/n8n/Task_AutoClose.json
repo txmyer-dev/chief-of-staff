@@ -1,0 +1,73 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "path": "=/root/agentic-wiki/01-PULSE/BRIEFINGS/{{ $now.setZone('America/New_York').toFormat('MM-dd-yy') }}.md"
+      },
+      "name": "Read Briefing",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const content = items[0].json.text;\nconst checkedLines = content.split('\\n').filter(line => line.includes('- [x]'));\nconst shadowMap = JSON.parse(fs.readFileSync('/root/agentic-wiki/03-SYSTEM/todoist-shadow-map.json', 'utf8'));\n\nreturn checkedLines.map(line => {\n  const taskName = line.replace('- [x] ', '').split(' <!--')[0].trim();\n  return { json: { id: shadowMap[taskName], content: taskName } };\n}).filter(item => item.json.id);"
+      },
+      "name": "Extract Checked Tasks",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.todoist.com/api/v1/tasks/{{ $json.id }}/close",
+        "authentication": "headerAuth"
+      },
+      "name": "Close Todoist Task",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        650,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Read Briefing": {
+      "main": [
+        [
+          {
+            "node": "Extract Checked Tasks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Checked Tasks": {
+      "main": [
+        [
+          {
+            "node": "Close Todoist Task",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

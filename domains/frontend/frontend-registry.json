@@ -1,0 +1,115 @@
+{
+  "domain": "frontend",
+  "capabilities": [
+    {
+      "name": "frontend-builder",
+      "type": "subagent",
+      "description": "Spawns the Frontend Developer subagent to implement UI features, refactor components, and integrate REST/GraphQL APIs.",
+      "orchestrator": "paperclip.ing",
+      "execution": {
+        "method": "cli",
+        "command": "paperclip run --agent frontend-developer",
+        "arguments": [
+          "--path",
+          "{{target_directory}}",
+          "--instructions",
+          "{{task_instructions}}"
+        ]
+      }
+    },
+    {
+      "name": "ui-designer",
+      "type": "subagent",
+      "description": "Spawns the UI Designer subagent to establish visual layout, align styles with the design system, and polish typography/color palettes.",
+      "orchestrator": "paperclip.ing",
+      "execution": {
+        "method": "cli",
+        "command": "paperclip run --agent ui-designer",
+        "arguments": [
+          "--path",
+          "{{target_directory}}",
+          "--theme",
+          "{{design_theme}}"
+        ]
+      }
+    },
+    {
+      "name": "ux-auditor",
+      "type": "subagent",
+      "description": "Spawns the UX Architect subagent to analyze user journeys, wireframe navigation structures, and optimize task completion flows.",
+      "orchestrator": "paperclip.ing",
+      "execution": {
+        "method": "cli",
+        "command": "paperclip run --agent ux-architect",
+        "arguments": [
+          "--path",
+          "{{target_directory}}"
+        ]
+      }
+    },
+    {
+      "name": "accessibility-checker",
+      "type": "subagent",
+      "description": "Spawns the Accessibility Auditor subagent to perform WCAG 2.1 compliance scans, verify screen reader accessibility, and audit ARIA markup.",
+      "orchestrator": "paperclip.ing",
+      "execution": {
+        "method": "cli",
+        "command": "paperclip run --agent accessibility-auditor",
+        "arguments": [
+          "--url",
+          "{{target_url}}",
+          "--standard",
+          "WCAG2.1-AA"
+        ]
+      }
+    },
+    {
+      "name": "performance-benchmarker",
+      "type": "subagent",
+      "description": "Spawns the Performance Benchmarker subagent to run detailed Web Vitals profiling, measure bundle size issues, and identify render-blocking resources.",
+      "orchestrator": "paperclip.ing",
+      "execution": {
+        "method": "cli",
+        "command": "paperclip run --agent performance-benchmarker",
+        "arguments": [
+          "--url",
+          "{{target_url}}",
+          "--output-dir",
+          "{{report_directory}}"
+        ]
+      }
+    },
+    {
+      "name": "delight-injector",
+      "type": "subagent",
+      "description": "Spawns the Whimsy Injector subagent to integrate micro-animations, GSAP-driven transitions, sound effects, and interactive Easter eggs.",
+      "orchestrator": "paperclip.ing",
+      "execution": {
+        "method": "cli",
+        "command": "paperclip run --agent whimsy-injector",
+        "arguments": [
+          "--path",
+          "{{target_directory}}",
+          "--animation-level",
+          "delightful"
+        ]
+      }
+    },
+    {
+      "name": "rapid-prototyper",
+      "type": "subagent",
+      "description": "Spawns the Rapid Prototyper subagent to quickly scaffold frontend boilerplates using Vite, React, Tailwind CSS, or vanilla environments.",
+      "orchestrator": "paperclip.ing",
+      "execution": {
+        "method": "cli",
+        "command": "paperclip run --agent rapid-prototyper",
+        "arguments": [
+          "--output",
+          "{{target_directory}}",
+          "--template",
+          "{{project_template}}"
+        ]
+      }
+    }
+  ]
+}

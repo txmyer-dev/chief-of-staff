@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "description": "Manifest for environment variable synchronization and visibility control.",
+  "manifest": [
+    {
+      "key": "BRIGHTDATA_API_KEY",
+      "tier": "public",
+      "description": "General utility key for web scraping. Used by CoS, Paperclip, and Claude.",
+      "apps": ["chief-of-staff", "paperclip", "claude-cli"]
+    },
+    {
+      "key": "GITHUB_TOKEN",
+      "tier": "public",
+      "description": "Required for repository management and Paperclip integrations.",
+      "apps": ["chief-of-staff", "paperclip", "claude-cli"]
+    },
+    {
+      "key": "TODOIST_API_TOKEN",
+      "tier": "private",
+      "description": "PII: Personal task management for Wayfinder agent.",
+      "apps": ["chief-of-staff"]
+    },
+    {
+      "key": "WITHINGS_CLIENT_ID",
+      "tier": "private",
+      "description": "PII: Health data for Vitalis agent.",
+      "apps": ["chief-of-staff"]
+    },
+    {
+      "key": "WITHINGS_CLIENT_SECRET",
+      "tier": "private",
+      "description": "PII: Health data for Vitalis agent.",
+      "apps": ["chief-of-staff"]
+    },
+    {
+      "key": "PGPASSWORD",
+      "tier": "restricted",
+      "description": "Infrastructure: Dokploy database password. Should stay in root .env only.",
+      "apps": ["dokploy"]
+    }
+  ]
+}

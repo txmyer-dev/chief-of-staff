@@ -1,0 +1,33 @@
+24-ITEM STORY EXPLANATION:
+1. Prospect enters the Sales Floor (ICM CRM) looking for business transformation.
+2. The sales agent initiates the Onboarding process.
+3. Client details are captured in intake.yaml (The Blueprint).
+4. CRM profile.yaml is initialized to track the relationship.
+5. A service Package is selected (e.g., Web Dev, Social Media).
+6. Pre-flight checks begin to ensure project feasibility.
+7. Project Management silo generates the initial Contract and Project Plan.
+8. Client signs the contract (The Green Light).
+9. ICM-Activate is triggered to start the production engine.
+10. The Artifact Bus is seeded with initial data from intake.yaml.
+11. Initial artifacts (Business Goals, Brand Values) land on the conveyor belt.
+12. The Factory (ICM Tree) comes alive as silos scan the Artifact Bus.
+13. Product Silo sees Business Goals and starts Discovery.
+14. Silos that lack inputs remain in 'Blocked' state (Waiting at the station).
+15. Product Silo finishes Discovery and writes a Research Report to its output/ folder.
+16. ICM-Complete is run, promoting the Research Report to the Artifact Bus.
+17. The Research Report moves along the conveyor belt to the next silos.
+18. UI Silo sees the Research Report and unblocks to start the Design System.
+19. Engineering Silo waits for the Design System and Technical Specs.
+20. Multiple silos work in parallel as the Artifact Bus fulfills their needs.
+21. Final deliverables (Source Code, QA Cert) are promoted to the Bus.
+22. The finished 'Product' is transported back to the Sales Floor.
+23. The sales agent presents the final work to the happy Client.
+24. CRM record is updated to 'Success' and the factory prepares for the next run.
+
+STRUCTURAL ELEMENTS IDENTIFIED:
+- Processes: Onboarding, Pre-flight, Activation, Execution, Promotion, Delivery.
+- Decisions: Contract approval, Input readiness checks (icm-activate).
+- States: Prospect, Onboarded, Active, Blocked, Complete, Delivered.
+- Entities: ICM CRM (Sales Floor), Artifact Bus (Conveyor), ICM Tree (Factory), Client, Silos.
+- Flows: Unidirectional flow from CRM → Bus → Factory (initiation); Bidirectional flow during execution (promotion); Return flow from Factory → Bus → CRM (delivery).
+- Conditions: Input satisfying dependencies unblocks silos.

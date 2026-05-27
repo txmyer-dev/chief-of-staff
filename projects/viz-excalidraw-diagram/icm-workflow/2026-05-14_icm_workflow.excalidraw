@@ -1,0 +1,258 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {
+      "type": "text",
+      "id": "title",
+      "x": 200, "y": 50,
+      "width": 600, "height": 40,
+      "text": "ICM SYSTEM WORKFLOW: FACTORY TO SALES FLOOR",
+      "fontSize": 28,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "strokeColor": "#2D2D2D",
+      "roughness": 1,
+      "seed": 10001
+    },
+    {
+      "type": "rectangle",
+      "id": "sales_floor",
+      "x": 50, "y": 150, "width": 250, "height": 400,
+      "strokeColor": "#2D2D2D",
+      "backgroundColor": "#4BA3D433",
+      "fillStyle": "hachure",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "roundness": {"type": 3},
+      "seed": 20001
+    },
+    {
+      "type": "text",
+      "id": "sales_label",
+      "x": 75, "y": 170, "width": 200, "height": 25,
+      "text": "ICM CRM (Sales Floor)",
+      "fontSize": 18,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "strokeColor": "#2D2D2D",
+      "containerId": "sales_floor",
+      "seed": 20002
+    },
+    {
+      "type": "text",
+      "id": "intake_note",
+      "x": 70, "y": 250, "width": 210, "height": 60,
+      "text": "• Client Intake\n• Goals & Brand\n• Package Selected",
+      "fontSize": 16,
+      "fontFamily": 3,
+      "strokeColor": "#2D2D2D",
+      "seed": 20003
+    },
+    {
+      "type": "rectangle",
+      "id": "bus",
+      "x": 350, "y": 300, "width": 300, "height": 100,
+      "strokeColor": "#2D2D2D",
+      "backgroundColor": "#F4C54233",
+      "fillStyle": "hachure",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "roundness": {"type": 3},
+      "seed": 30001
+    },
+    {
+      "type": "text",
+      "id": "bus_label",
+      "x": 400, "y": 335, "width": 200, "height": 30,
+      "text": "ARTIFACT BUS",
+      "fontSize": 20,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "strokeColor": "#2D2D2D",
+      "containerId": "bus",
+      "seed": 30002
+    },
+    {
+      "type": "rectangle",
+      "id": "factory",
+      "x": 700, "y": 150, "width": 300, "height": 400,
+      "strokeColor": "#2D2D2D",
+      "backgroundColor": "#EF635133",
+      "fillStyle": "hachure",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "roundness": {"type": 3},
+      "seed": 40001
+    },
+    {
+      "type": "text",
+      "id": "factory_label",
+      "x": 750, "y": 170, "width": 200, "height": 25,
+      "text": "ICM TREE (Factory)",
+      "fontSize": 18,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "strokeColor": "#2D2D2D",
+      "containerId": "factory",
+      "seed": 40002
+    },
+    {
+      "type": "rectangle",
+      "id": "silo_prod",
+      "x": 725, "y": 220, "width": 120, "height": 60,
+      "strokeColor": "#2D2D2D",
+      "backgroundColor": "#EF635155",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "seed": 40003
+    },
+    {
+      "type": "text",
+      "id": "silo_prod_txt",
+      "x": 735, "y": 235, "width": 100, "height": 30,
+      "text": "Product",
+      "fontSize": 14,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "containerId": "silo_prod",
+      "seed": 40004
+    },
+    {
+      "type": "rectangle",
+      "id": "silo_eng",
+      "x": 860, "y": 220, "width": 120, "height": 60,
+      "strokeColor": "#2D2D2D",
+      "backgroundColor": "#EF635155",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "seed": 40005
+    },
+    {
+      "type": "text",
+      "id": "silo_eng_txt",
+      "x": 870, "y": 235, "width": 100, "height": 30,
+      "text": "Eng.",
+      "fontSize": 14,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "containerId": "silo_eng",
+      "seed": 40006
+    },
+    {
+      "type": "rectangle",
+      "id": "silo_mkt",
+      "x": 725, "y": 300, "width": 120, "height": 60,
+      "strokeColor": "#2D2D2D",
+      "backgroundColor": "#EF635155",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "seed": 40007
+    },
+    {
+      "type": "text",
+      "id": "silo_mkt_txt",
+      "x": 735, "y": 315, "width": 100, "height": 30,
+      "text": "Marketing",
+      "fontSize": 14,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "containerId": "silo_mkt",
+      "seed": 40008
+    },
+    {
+      "type": "rectangle",
+      "id": "silo_fin",
+      "x": 860, "y": 300, "width": 120, "height": 60,
+      "strokeColor": "#2D2D2D",
+      "backgroundColor": "#EF635155",
+      "strokeWidth": 1,
+      "roughness": 1,
+      "seed": 40009
+    },
+    {
+      "type": "text",
+      "id": "silo_fin_txt",
+      "x": 870, "y": 315, "width": 100, "height": 30,
+      "text": "Finance",
+      "fontSize": 14,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "containerId": "silo_fin",
+      "seed": 40010
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_to_bus",
+      "x": 300, "y": 350, "width": 50, "height": 0,
+      "strokeColor": "#2D2D2D",
+      "strokeWidth": 2,
+      "points": [[0, 0], [50, 0]],
+      "endArrowhead": "arrow",
+      "seed": 50001
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_from_bus",
+      "x": 650, "y": 350, "width": 50, "height": 0,
+      "strokeColor": "#2D2D2D",
+      "strokeWidth": 2,
+      "points": [[0, 0], [50, 0]],
+      "endArrowhead": "arrow",
+      "seed": 50002
+    },
+    {
+      "type": "text",
+      "id": "intake_box",
+      "x": 310, "y": 320, "width": 30, "height": 20,
+      "text": "📦",
+      "fontSize": 20,
+      "seed": 50003
+    },
+    {
+      "type": "text",
+      "id": "artifact_note",
+      "x": 360, "y": 410, "width": 280, "height": 40,
+      "text": "(Standardized Hand-off Channel)",
+      "fontSize": 12,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "strokeColor": "#2D2D2D",
+      "seed": 50004
+    },
+    {
+      "type": "arrow",
+      "id": "feedback_loop",
+      "x": 850, "y": 550, "width": 600, "height": 100,
+      "strokeColor": "#6BBF6A",
+      "strokeWidth": 3,
+      "points": [[0, 0], [0, 80], [-600, 80], [-600, 0]],
+      "endArrowhead": "arrow",
+      "strokeStyle": "dashed",
+      "seed": 60001
+    },
+    {
+      "type": "text",
+      "id": "delivery_label",
+      "x": 450, "y": 640, "width": 200, "height": 25,
+      "text": "DELIVERY TO CUSTOMER",
+      "fontSize": 16,
+      "fontFamily": 3,
+      "textAlign": "center",
+      "strokeColor": "#6BBF6A",
+      "seed": 60002
+    },
+    {
+      "type": "text",
+      "id": "happy_client",
+      "x": 140, "y": 480, "width": 60, "height": 60,
+      "text": "😊",
+      "fontSize": 50,
+      "seed": 60003
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#FDF6E3"
+  }
+}

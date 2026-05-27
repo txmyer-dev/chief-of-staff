@@ -1,0 +1,73 @@
+[
+  {
+    "id": "DateIdeasCuratorWorkflow",
+    "name": "Date Ideas Curator",
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 19 * * 4"
+              }
+            ]
+          }
+        },
+        "id": "schedule-trigger",
+        "name": "Schedule Trigger (Thursday 7 PM)",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          300
+        ]
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "http://172.16.0.1:7777/task",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer c77553f82678c7faa180c2192fbf857a98c5fad082daac8d"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"description\": \"Run the Date Ideas Curator weekly task. Perform the following steps:\\n1. Search for quiet, low-stimulation, two-person date activities happening 14 to 28 days from today (local time is {{ $now.toISOString() }}) in Pennsylvania. Focus on Philadelphia and the 5 collar counties (Bucks, Chester, Delaware, Montgomery) first, then wider PA.\\n2. Distribute selection across these 8 categories:\\n   - Bookstore readings, author talks, poetry nights\\n   - Tea houses, tea tastings, afternoon tea service\\n   - Quiet museums, galleries, exhibits\\n   - Botanical gardens, arboretums, nature walks\\n   - Live acoustic music, jazz lounges, intimate venues\\n   - Craft workshops (pottery, candle-making, calligraphy)\\n   - Independent film screenings, repertory cinemas\\n   - Historic sites, walking tours, architecture tours\\n3. Prioritize official venue calendars (e.g. Free Library, PMA, Barnes, Rosenbach, Longwood, Morris Arboretum, etc.). Use Eventbrite/aggregators as backups.\\n4. Fetch already-added calendar events in the 14-28 day window using GOOGLECALENDAR_EVENTS_LIST on calendar ID 'b242fb48567fd314a975e940fd685c9f53112b1d16787bb108b7e9760e312205@group.calendar.google.com' (America/New_York). Deduplicate against them matching on venue + date (not just title).\\n5. For 8 to 15 unique curated events, create Google Calendar events using ExecuteIntegration with GOOGLECALENDAR_CREATE_EVENT.\\n6. Format descriptions with: 2-3 sentences explaining why it fits the vibe, Booking Status (e.g., 'REQUIRES BOOKING — buy tickets ahead'), Price, Ticket Link, and Source Venue URL.\\n7. Post a summary report in the conversation detailing total added by category, 3-5 standout picks with rationale, and any empty sources.\",\n  \"client\": \"n8n\"\n}",
+          "options": {}
+        },
+        "id": "delegate-curation-task",
+        "name": "Delegate Curation Task",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4,
+        "position": [
+          250,
+          300
+        ]
+      }
+    ],
+    "connections": {
+      "Schedule Trigger (Thursday 7 PM)": {
+        "main": [
+          [
+            {
+              "node": "Delegate Curation Task",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "active": false,
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "meta": null
+  }
+]

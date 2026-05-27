@@ -1,0 +1,237 @@
+[
+  {
+    "id": "MorningBriefingWorkflow",
+    "name": "Morning Briefing",
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 6 * * 1-5"
+              }
+            ]
+          }
+        },
+        "id": "schedule-trigger",
+        "name": "Schedule Trigger",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          300
+        ]
+      },
+      {
+        "parameters": {
+          "path": "trigger-morning-briefing",
+          "options": {}
+        },
+        "id": "webhook-trigger",
+        "name": "Webhook Trigger",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          500
+        ]
+      },
+      {
+        "parameters": {
+          "calendar": "primary",
+          "operation": "list",
+          "limit": 10,
+          "filters": {
+            "timeMin": "={{ $now.startOf('day').toISOString() }}",
+            "timeMax": "={{ $now.endOf('day').toISOString() }}"
+          }
+        },
+        "id": "google-calendar",
+        "name": "Google Calendar",
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1,
+        "position": [
+          200,
+          400
+        ],
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "resource": "message",
+          "operation": "getAll",
+          "channelId": "general",
+          "limit": 20
+        },
+        "id": "slack-data",
+        "name": "Slack Data",
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2,
+        "position": [
+          400,
+          400
+        ],
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "filters": {
+            "read": false
+          },
+          "limit": 10
+        },
+        "id": "gmail-data",
+        "name": "Gmail Data",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2,
+        "position": [
+          600,
+          400
+        ],
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "filters": {
+            "filter": "today | overdue"
+          }
+        },
+        "id": "todoist-tasks",
+        "name": "Todoist Tasks",
+        "type": "n8n-nodes-base.todoist",
+        "typeVersion": 2,
+        "position": [
+          800,
+          400
+        ],
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "jsCode": "const calendar = $(\"Google Calendar\").all();\nconst slack = $(\"Slack Data\").all();\nconst gmail = $(\"Gmail Data\").all();\nconst tasks = $(\"Todoist Tasks\").all();\n\nreturn [{\n  json: {\n    context: JSON.stringify({\n      calendar,\n      slack,\n      gmail,\n      tasks,\n      timestamp: new Date().toISOString()\n    })\n  }\n}];"
+        },
+        "id": "aggregate-data",
+        "name": "Aggregate Data",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 1,
+        "position": [
+          1000,
+          400
+        ]
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "http://172.16.0.1:7777/task",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer c77553f82678c7faa180c2192fbf857a98c5fad082daac8d"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ {\n  description: `Use the MorningBriefing skill to generate a morning briefing using this JSON context: ${$json.context}. Write the markdown to /root/agentic-wiki/02-AGENT/BRIEFINGS/${$now.format('MM-DD-YY')}.md. Finally, cd into /root/agentic-wiki, git add the file, git commit with message 'Add Morning Briefing ${$now.format('MM-DD-YY')}', and git push origin main.`,\n  client: 'n8n',\n  callback_url: 'https://n8n.felaniam.cloud/webhook/morning-briefing-complete'\n} }}",
+          "options": {}
+        },
+        "id": "generate-and-push",
+        "name": "Generate & Push Briefing",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4,
+        "position": [
+          1200,
+          400
+        ]
+      }
+    ],
+    "connections": {
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "Google Calendar",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook Trigger": {
+        "main": [
+          [
+            {
+              "node": "Google Calendar",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Calendar": {
+        "main": [
+          [
+            {
+              "node": "Slack Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Slack Data": {
+        "main": [
+          [
+            {
+              "node": "Gmail Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Gmail Data": {
+        "main": [
+          [
+            {
+              "node": "Todoist Tasks",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Todoist Tasks": {
+        "main": [
+          [
+            {
+              "node": "Aggregate Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate Data": {
+        "main": [
+          [
+            {
+              "node": "Generate & Push Briefing",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "active": false,
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "meta": null
+  }
+]

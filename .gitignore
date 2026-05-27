@@ -1,0 +1,23 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+web_modules/
+
+# Python virtual environment
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Local/system configurations
+.env
+.env.local
+.gemini/
+graphify-out/
+todoist_run.log
+
+# Logs & temp downloads
+*.log
+stitch-downloads/
+agentic-wiki
+
