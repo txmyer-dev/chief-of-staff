@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CHIEF-OF-STAFF | AI Agent Orchestration</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&amp;family=Inter:wght@400;500;700&amp;family=Jetbrains+Mono:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script
+        id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { tertiary: "#ffb95f", "on-primary": "#002a78", background: "#121318", "surface-variant": "#34343a", "on-error-container": "#ffdad6", "inverse-primary": "#0053db", "surface-container-lowest": "#0d0e13", primary: "#b4c5ff", "secondary-fixed-dim": "#4cd7f6", "surface-container-high": "#292a2f", "on-secondary-container": "#00424e", "tertiary-fixed-dim": "#ffb95f", "outline-variant": "#434655", "surface-dim": "#121318", "surface-container-highest": "#34343a", "tertiary-fixed": "#ffddb8", "primary-fixed": "#dbe1ff", "on-primary-fixed": "#00174b", "on-secondary": "#003640", "secondary-fixed": "#acedff", "surface-tint": "#b4c5ff", "inverse-on-surface": "#2f3036", "surface-bright": "#38393f", "on-surface-variant": "#c3c6d7", "inverse-surface": "#e3e1e9", "error-container": "#93000a", "primary-fixed-dim": "#b4c5ff", "primary-container": "#2563eb", "on-secondary-fixed": "#001f26", "tertiary-container": "#996100", "on-tertiary-fixed-variant": "#653e00", outline: "#8d90a0", "on-tertiary-container": "#ffeedd", "surface-container-low": "#1a1b21", secondary: "#4cd7f6", "on-tertiary-fixed": "#2a1700", "on-background": "#e3e1e9", "secondary-container": "#03b5d3", error: "#ffb4ab", "on-primary-container": "#eeefff", "surface-container": "#1e1f25", surface: "#121318", "on-tertiary": "#472a00", "on-error": "#690005", "on-secondary-fixed-variant": "#004e5c", "on-primary-fixed-variant": "#003ea8", "on-surface": "#e3e1e9" }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }, spacing: { "container-max": "1200px", xxl: "48px", unit: "4px", xl: "32px", gutter: "16px", md: "16px", sm: "8px", lg: "24px", xs: "4px" }, fontFamily: { "display-lg": ["Geist"], "body-base": ["Inter"], "headline-md": ["Geist"], "code-mono": ["JetBrains Mono"], "label-caps": ["JetBrains Mono"], "display-lg-mobile": ["Geist"], headline: ["Geist"], display: ["Geist"], body: ["Inter"], label: ["Jetbrains Mono"] }, fontSize: { "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.03em", fontWeight: "800" }], "body-base": ["16px", { lineHeight: "26px", letterSpacing: "0", fontWeight: "400" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.02em", fontWeight: "700" }], "code-mono": ["14px", { lineHeight: "20px", letterSpacing: "0", fontWeight: "400" }], "label-caps": ["11px", { lineHeight: "16px", letterSpacing: "0.1em", fontWeight: "700" }], "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.03em", fontWeight: "800" }] } } } };</script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .command-glow {
+            box-shadow: 0px 0px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        .active-glow {
+            box-shadow: 0px 0px 20px rgba(76, 215, 246, 0.15);
+        }
+
+        .steel-border {
+            border: 1px solid #23273a;
+        }
+
+        .accent-line-emerald {
+            border-left: 3px solid #10b981;
+        }
+
+        .accent-line-cobalt {
+            border-left: 3px solid #2563eb;
+        }
+
+        .accent-line-cyan {
+            border-left: 3px solid #4cd7f6;
+        }
+
+        body {
+            background-color: #121318;
+            color: #e3e1e9;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="selection:bg-primary selection:text-on-primary">
+    <!-- TopAppBar -->
+    <header class="bg-background dark:bg-background border-b border-outline-variant w-full sticky top-0 z-50">
+        <div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+            <div class="flex items-center gap-sm">
+                <span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+                <span
+                    class="font-display-lg text-display-lg tracking-tighter text-on-background dark:text-on-background">CHIEF-OF-STAFF</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-lg">
+                <a class="text-primary font-bold font-label-caps hover:text-secondary transition-colors duration-200"
+                    href="#">DASHBOARD</a>
+                <a class="text-on-surface-variant font-medium font-label-caps hover:text-secondary transition-colors duration-200"
+                    href="#">DOCS</a>
+                <div class="h-4 w-[1px] bg-outline-variant"></div>
+                <button
+                    class="font-label-caps bg-primary-container text-on-primary-container px-md py-xs rounded hover:opacity-90 active:opacity-80 transition-all">
+                    REPOSITORY
+                </button>
+            </nav>
+            <div class="md:hidden">
+                <span class="material-symbols-outlined text-on-surface-variant" data-icon="menu">menu</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-xxl pb-xxl px-gutter border-b border-outline-variant overflow-hidden">
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent">
+                </div>
+            </div>
+            <div class="max-w-container-max mx-auto text-center relative z-10">
+                <div
+                    class="inline-flex items-center gap-xs px-sm py-1 rounded-full bg-surface-container-high border border-outline-variant mb-lg">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="font-label-caps text-[10px] text-on-surface-variant">SYSTEM v2.4.0 OPERATIONAL</span>
+                </div>
+                <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-md text-on-background">
+                    CHIEF-OF-STAFF
+                </h1>
+                <p class="font-headline-md text-headline-md text-on-surface-variant max-w-2xl mx-auto mb-xl">
+                    The ultimate command layer for local AI agents. Orchestrate workflows, automate tasks, and manage
+                    LLMs directly from your terminal.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-md">
+                    <button
+                        class="bg-primary-container text-on-primary-container font-label-caps px-xl py-md rounded active:opacity-80 transition-all command-glow flex items-center justify-center gap-sm">
+                        <span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+                        GET STARTED
+                    </button>
+                    <button
+                        class="bg-transparent border border-outline-variant text-on-surface font-label-caps px-xl py-md rounded hover:bg-surface-variant transition-all flex items-center justify-center gap-sm">
+                        <span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+                        VIEW ON GITHUB
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Features Bento Grid -->
+        <section class="py-xxl px-gutter max-w-container-max mx-auto">
+            <div class="mb-xl">
+                <h2 class="font-headline-md text-headline-md text-primary mb-xs">CORE CAPABILITIES</h2>
+                <div class="h-1 w-12 bg-primary"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+                <!-- Large Feature -->
+                <div
+                    class="md:col-span-8 bg-surface-container-lowest steel-border p-lg accent-line-cobalt hover:bg-surface-container-low transition-colors group">
+                    <div class="flex justify-between items-start mb-lg">
+                        <span class="material-symbols-outlined text-primary text-4xl" data-icon="hub">hub</span>
+                        <span class="font-label-caps text-on-surface-variant opacity-50">MODULE: ORCHESTRATOR</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-sm">Local LLM Orchestration</h3>
+                    <p class="font-body-base text-on-surface-variant">Seamlessly switch between Llama 3, Mistral, and
+                        custom fine-tuned models running locally via Ollama or LM Studio. Chief-of-Staff acts as the
+                        central router for all your local intelligence requirements.</p>
+                </div>
+                <!-- Small Feature 1 -->
+                <div
+                    class="md:col-span-4 bg-surface-container-lowest steel-border p-lg accent-line-cyan hover:bg-surface-container-low transition-colors">
+                    <div class="mb-lg">
+                        <span class="material-symbols-outlined text-secondary text-4xl"
+                            data-icon="auto_mode">auto_mode</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-sm">Task Automation</h3>
+                    <p class="font-body-base text-on-surface-variant">Define complex, multi-step chains that execute in
+                        sequence or parallel with human-in-the-loop validation.</p>
+                </div>
+                <!-- Small Feature 2 -->
+                <div
+                    class="md:col-span-4 bg-surface-container-lowest steel-border p-lg accent-line-emerald hover:bg-surface-container-low transition-colors">
+                    <div class="mb-lg">
+                        <span class="material-symbols-outlined text-emerald-400 text-4xl"
+                            data-icon="extension">extension</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-sm">Plugin System</h3>
+                    <p class="font-body-base text-on-surface-variant">Extend functionality with a robust Python-based
+                        SDK. Build custom tools for web searching, file manipulation, or API integrations.</p>
+                </div>
+                <!-- Medium Feature -->
+                <div
+                    class="md:col-span-8 bg-surface-container-lowest steel-border p-lg accent-line-cobalt hover:bg-surface-container-low transition-colors relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-lg">
+                        <span class="material-symbols-outlined text-primary text-4xl"
+                            data-icon="security">security</span>
+                        <span class="font-label-caps text-on-surface-variant opacity-50">STATUS: ENCRYPTED</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-sm">Privacy-First Architecture</h3>
+                    <p class="font-body-base text-on-surface-variant">Designed for the security-conscious builder. Your
+                        data never leaves your local environment. Chief-of-Staff is an air-gapped ready solution for
+                        sensitive workflows.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Technical / Code Section -->
+        <section class="py-xxl bg-surface-container-lowest border-y border-outline-variant">
+            <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-xxl items-center">
+                <div>
+                    <h2 class="font-headline-md text-headline-md text-on-background mb-md">READY FOR DEPLOYMENT</h2>
+                    <p class="font-body-base text-on-surface-variant mb-xl">Install the CLI and start your first agent
+                        session in seconds. Chief-of-Staff is built for developers who value minimal friction and
+                        maximal control.</p>
+                    <ul class="space-y-md">
+                        <li class="flex items-center gap-md">
+                            <span class="material-symbols-outlined text-primary"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="font-body-base">Zero-config initialization</span>
+                        </li>
+                        <li class="flex items-center gap-md">
+                            <span class="material-symbols-outlined text-primary"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="font-body-base">Standardized JSON-RPC protocol</span>
+                        </li>
+                        <li class="flex items-center gap-md">
+                            <span class="material-symbols-outlined text-primary"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="font-body-base">Extensive logging and diagnostics</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-[#0d0e13] border border-outline-variant rounded-lg overflow-hidden command-glow">
+                    <div
+                        class="bg-surface-container-high px-md py-sm flex justify-between items-center border-b border-outline-variant">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                        </div>
+                        <span class="font-label-caps text-on-surface-variant opacity-60">TERMINAL</span>
+                    </div>
+                    <div class="p-lg font-code-mono text-code-mono">
+                        <div class="flex gap-md mb-md">
+                            <span class="text-secondary opacity-50">1</span>
+                            <span class="text-on-surface">pip install chief-of-staff</span>
+                        </div>
+                        <div class="flex gap-md mb-md">
+                            <span class="text-secondary opacity-50">2</span>
+                            <span class="text-on-surface">cos init --profile heavy-duty</span>
+                        </div>
+                        <div class="flex gap-md mb-md">
+                            <span class="text-secondary opacity-50">3</span>
+                            <span class="text-on-surface">cos run agent "Analyze system logs"</span>
+                        </div>
+                        <div class="flex gap-md">
+                            <span class="text-secondary opacity-50">4</span>
+                            <span class="text-emerald-400 opacity-80">✓ Agent deployed locally. Listening on port
+                                8080.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="py-xxl px-gutter">
+            <div
+                class="max-w-4xl mx-auto text-center border border-primary/30 p-xxl rounded-xl bg-gradient-to-b from-primary/5 to-transparent relative overflow-hidden">
+                <div class="absolute -top-24 -left-24 w-48 h-48 bg-primary/10 blur-3xl rounded-full"></div>
+                <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-secondary/10 blur-3xl rounded-full"></div>
+                <h2 class="font-display-lg text-display-lg-mobile md:text-headline-md mb-md">TAKE COMMAND TODAY</h2>
+                <p class="font-body-base text-on-surface-variant mb-xl">Join the community of builders automating their
+                    worlds with privacy and precision.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-md">
+                    <button
+                        class="bg-primary-container text-on-primary-container font-label-caps px-xl py-md rounded hover:opacity-90 transition-all active-glow">
+                        VIEW ON GITHUB
+                    </button>
+                    <button
+                        class="bg-surface-container border border-outline-variant text-on-surface font-label-caps px-xl py-md rounded hover:bg-surface-variant transition-all">
+                        READ THE MANIFESTO
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant w-full py-xxl">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center gap-lg px-gutter max-w-container-max mx-auto">
+            <div class="flex flex-col gap-sm items-center md:items-start">
+                <span class="font-code-mono text-code-mono text-secondary">CHIEF-OF-STAFF // COMMAND CENTER</span>
+                <p class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant">
+                    © 2024 COMMAND CENTER OPS. ALL SYSTEMS OPERATIONAL.
+                </p>
+            </div>
+            <div class="flex gap-lg">
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
+                    href="#">DOCUMENTATION</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
+                    href="#">CHANGELOG</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
+                    href="#">SECURITY</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
+                    href="#">SUPPORT</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Micro-interactions for terminal effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const codeLines = document.querySelectorAll('.font-code-mono > div');
+            codeLines.forEach((line, index) => {
+                line.style.opacity = '0';
+                line.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    line.style.transition = 'all 0.5s ease-out';
+                    line.style.opacity = '1';
+                    line.style.transform = 'translateY(0)';
+                }, index * 200 + 500);
+            });
+
+            // Feature card hover brightness
+            const cards = document.querySelectorAll('.steel-border');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
