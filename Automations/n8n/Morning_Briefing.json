@@ -136,7 +136,7 @@
           },
           "sendBody": true,
           "specifyBody": "json",
-          "jsonBody": "={{ {\n  description: `Use the MorningBriefing skill to generate a morning briefing using this JSON context: ${$json.context}. Write the markdown to /root/agentic-wiki/02-AGENT/BRIEFINGS/${$now.format('MM-DD-YY')}.md. Finally, cd into /root/agentic-wiki, git add the file, git commit with message 'Add Morning Briefing ${$now.format('MM-DD-YY')}', and git push origin main.`,\n  client: 'n8n',\n  callback_url: 'https://n8n.felaniam.cloud/webhook/morning-briefing-complete'\n} }}",
+          "jsonBody": "={{ {\n  description: `Use the MorningBriefing skill to generate a morning briefing using this JSON context: ${$json.context}. Write the markdown to /root/agentic-wiki/01-PULSE/BRIEFINGS/${$now.format('yyyy-MM-dd')}.md. Finally, cd into /root/agentic-wiki, git add the file, git commit with message 'Add Morning Briefing ${$now.format('yyyy-MM-dd')}', and git push origin main.`,\n  client: 'n8n',\n  callback_url: 'https://n8n.felaniam.cloud/webhook/morning-briefing-complete'\n} }}",
           "options": {}
         },
         "id": "generate-and-push",

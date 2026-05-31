@@ -9,7 +9,7 @@
             }
           ]
         },
-        "path": "=/root/agentic-wiki/01-PULSE/BRIEFINGS/{{ $now.setZone('America/New_York').toFormat('MM-dd-yy') }}.md"
+        "path": "=/root/agentic-wiki/01-PULSE/BRIEFINGS/{{ $now.setZone('America/New_York').toFormat('yyyy-MM-dd') }}.md"
       },
       "name": "Read Briefing",
       "type": "n8n-nodes-base.readBinaryFile",

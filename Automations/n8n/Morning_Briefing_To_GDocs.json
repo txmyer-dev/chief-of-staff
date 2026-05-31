@@ -19,7 +19,7 @@
       },
       {
         "parameters": {
-          "jsCode": "const body = $input.first().json.body || $input.first().json;\nconst status = body.status;\nif (status !== 'completed') {\n  throw new Error(`Task ended with status: ${status}`);\n}\nconst content = body.briefing_content || '';\nconst today = new Date();\nconst mm = String(today.getMonth() + 1).padStart(2, '0');\nconst dd = String(today.getDate()).padStart(2, '0');\nconst yy = String(today.getFullYear()).slice(-2);\nconst dateLabel = `${mm}-${dd}-${yy}`;\nreturn [{ json: { content, dateLabel, task_id: body.task_id } }];"
+          "jsCode": "const body = $input.first().json.body || $input.first().json;\nconst status = body.status;\nif (status !== 'completed') {\n  throw new Error(`Task ended with status: ${status}`);\n}\nconst content = body.briefing_content || '';\nconst today = new Date();\nconst yyyy = today.getFullYear();\nconst mm = String(today.getMonth() + 1).padStart(2, '0');\nconst dd = String(today.getDate()).padStart(2, '0');\nconst dateLabel = `${yyyy}-${mm}-${dd}`;\nreturn [{ json: { content, dateLabel, task_id: body.task_id } }];"
         },
         "id": "parse-payload",
         "name": "Parse Payload",
